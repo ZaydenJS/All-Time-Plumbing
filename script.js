@@ -7,8 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener("click", function () {
-      navMenu.classList.toggle("active");
+      const isOpen = navMenu.classList.toggle("active");
       mobileToggle.classList.toggle("active");
+      mobileToggle.setAttribute("aria-expanded", String(isOpen));
     });
   }
 
@@ -21,16 +22,29 @@ document.addEventListener("DOMContentLoaded", function () {
       const targetSection = document.querySelector(targetId);
 
       if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+        // Dynamically account for current sticky header height on mobile/desktop
+        const navbarEl = document.querySelector(".navbar");
+        const headerHeight = navbarEl
+          ? Math.ceil(navbarEl.getBoundingClientRect().height)
+          : 0;
+        const targetY =
+          window.pageYOffset +
+          targetSection.getBoundingClientRect().top -
+          headerHeight -
+          8; // small breathing space
+
         window.scrollTo({
-          top: offsetTop,
+          top: Math.max(targetY, 0),
           behavior: "smooth",
         });
 
-        // Close mobile menu if open
-        if (navMenu.classList.contains("active")) {
+        // Close mobile menu if open and update aria state
+        if (navMenu && navMenu.classList.contains("active")) {
           navMenu.classList.remove("active");
-          mobileToggle.classList.remove("active");
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+            mobileToggle.setAttribute("aria-expanded", "false");
+          }
         }
       }
     });
@@ -94,6 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         navbar.classList.remove("scrolled");
       }
+      // prevent layout shift by locking nav height after first paint
+      navbar.style.minHeight = navbar.offsetHeight + "px";
     });
   }
 
