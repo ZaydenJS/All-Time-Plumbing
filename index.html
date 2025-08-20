@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Status bar color to match header -->
+    <meta name="theme-color" content="#186c8b" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>
       All Time Plumbing - #1 Trusted Plumbing Experts | 24/7 Emergency Service
     </title>
@@ -230,6 +233,9 @@
         .nav-menu {
           display: none;
         }
+        .hero-badge {
+          display: none;
+        }
         .hero {
           padding: 40px 0 60px;
         }
@@ -257,6 +263,20 @@
           gap: 8px;
           padding: 12px 20px;
           font-size: 14px;
+        }
+
+        /* Ensure phone number text (not buttons) are white on mobile */
+        .trust-text-mobile,
+        .contact-method p,
+        .footer-contact p {
+          color: inherit !important;
+        }
+
+        .trust-text-mobile a,
+        .contact-method p a,
+        .footer-contact p a {
+          color: inherit !important;
+          text-decoration: none !important;
         }
       }
     </style>
