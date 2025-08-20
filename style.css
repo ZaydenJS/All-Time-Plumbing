@@ -55,17 +55,42 @@
   --transition-slow: 0.5s ease;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal overflow on mobile */
+@media (max-width: 768px) {
+  * {
+    max-width: 100%;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-primary);
   line-height: 1.6;
   color: var(--gray-700);
   background-color: var(--white);
+  min-width: 100%;
+  max-width: 100%;
 }
 
 .container {
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Trust Bar */
@@ -79,14 +104,30 @@ body {
   padding: 10px 0;
   font-size: 14px;
   font-weight: 500;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .trust-items {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 80px;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Desktop: Show full text, hide mobile text */
+.trust-text-full {
+  display: inline;
+}
+
+.trust-text-mobile {
+  display: none;
 }
 
 .trust-item {
@@ -257,7 +298,7 @@ body {
 /* Hero Section */
 .hero {
   background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
-  padding: 100px 0;
+  padding: 180px 0 220px; /* Much larger vertical spacing for desktop */
   position: relative;
   overflow: hidden;
 }
@@ -287,7 +328,7 @@ body {
 .hero-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 80px; /* Increased gap for better spacing */
   align-items: center;
   position: relative;
   z-index: 2;
@@ -445,7 +486,7 @@ body {
 
 .hero-image img {
   width: 100%;
-  height: 300px;
+  height: 400px; /* Increased height for better proportions */
   object-fit: cover;
   border-radius: 12px;
 }
@@ -1119,24 +1160,74 @@ body {
 }
 
 @media (max-width: 768px) {
+  .trust-bar {
+    padding: 4px 0; /* Much smaller padding */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    box-sizing: border-box;
+    font-size: 10px; /* Even smaller font for mobile */
+  }
+
   .trust-items {
-    gap: 8px;
-    justify-content: space-between;
+    gap: 4px;
+    justify-content: space-evenly; /* Better distribution */
     flex-wrap: nowrap;
-    padding: 0; /* container handles padding on mobile */
+    padding: 0 8px;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    box-sizing: border-box;
   }
 
   .trust-item {
-    font-size: 12px;
-    flex: 0 1 auto;
+    font-size: 11px;
+    flex: 1 1 auto;
     text-align: center;
     white-space: nowrap;
+    overflow: visible;
+    min-width: 0;
+    max-width: none;
+    padding: 0 1px;
   }
 
   .trust-item i {
-    font-size: 12px;
-    margin-right: 4px;
+    font-size: 10px; /* Smaller icons to save space */
+    margin-right: 3px; /* Reduced margin */
+  }
+
+  /* Show mobile text, hide full text on mobile */
+  .trust-text-full {
+    display: none;
+  }
+
+  .trust-text-mobile {
+    display: inline;
+  }
+
+  /* Ensure all containers and sections fill full width on mobile */
+  .container {
+    padding: 0 15px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  section {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .navbar {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Adjust navbar container padding for perfect left/right balance */
+  .navbar .container {
+    padding: 0 12px; /* Increased padding to give dropdown menu more space from edge */
   }
 
   .nav-menu {
@@ -1146,17 +1237,50 @@ body {
     left: 0;
     right: 0;
     background: var(--white);
-    box-shadow: var(--shadow-lg);
-    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    padding: 12px 0;
     flex-direction: column;
-    gap: 16px;
-    border-radius: 0 0 12px 12px;
+    gap: 0;
+    border-radius: 0 0 16px 16px;
     text-align: center;
     align-items: center;
+    overflow: hidden;
   }
 
   .nav-menu.active {
     display: flex;
+  }
+
+  .nav-menu .nav-link {
+    display: block;
+    width: 100%;
+    padding: 18px 25px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-menu .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .nav-menu .nav-link:hover {
+    background: rgba(44, 90, 160, 0.03);
+    color: #2c5aa0;
+    box-shadow: none;
+  }
+
+  .nav-menu .nav-link:hover::before {
+    display: none;
+  }
+
+  .nav-menu .nav-link::after {
+    display: none;
   }
 
   .mobile-toggle {
@@ -1164,11 +1288,11 @@ body {
   }
 
   .navbar {
-    padding: 10px 0;
+    padding: 4px 0; /* Much smaller navbar padding */
   }
 
   .nav-content {
-    padding: 0 16px;
+    padding: 0 0; /* Remove extra padding to let container handle spacing */
     gap: 10px;
     align-items: center;
   }
@@ -1176,26 +1300,33 @@ body {
   .logo {
     gap: 12px;
     flex-shrink: 0;
+    margin-left: -8px; /* Move logo further to the left */
   }
 
   .logo-icon {
-    width: 50px;
-    height: 50px;
+    width: 40px; /* Smaller logo */
+    height: 40px;
   }
 
   .logo-text h1 {
-    font-size: 20px;
+    font-size: 16px; /* Smaller logo text */
     line-height: 1;
+    margin-left: -8px; /* Move "ALL TIME" further left */
+    white-space: nowrap; /* Keep "ALL TIME" side by side */
   }
 
   .logo-text span {
-    font-size: 12px;
+    font-size: 10px; /* Smaller "PLUMBING" text */
     letter-spacing: 1px;
+    margin-left: 0; /* Reset margin to center under "ALL TIME" */
+    text-align: center; /* Center "PLUMBING" text */
+    display: block; /* Ensure it's a block element for centering */
   }
 
   .nav-cta {
     margin-left: auto;
-    margin-right: 8px;
+    margin-right: 0;
+    transform: translateX(-15px); /* Move Call Now button further to the left */
     flex-shrink: 0;
   }
 
@@ -1215,6 +1346,7 @@ body {
   .mobile-toggle {
     display: flex;
     flex-shrink: 0;
+    transform: translateX(-12px); /* Actually move dropdown menu to the left */
   }
 
   .mobile-toggle span {
@@ -1223,14 +1355,20 @@ body {
   }
 
   .hero {
-    padding: 40px 0 40px;
+    padding: 40px 0 60px; /* Reduced vertical spacing for mobile */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 0; /* Remove negative margin */
+    transform: none; /* Remove transform */
   }
 
   .hero-content {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 2px; /* Ultra minimal gap */
     text-align: center;
     margin-bottom: 0;
+    margin-top: 0; /* Reset margin */
   }
 
   .hero-text {
@@ -1238,24 +1376,40 @@ body {
   }
 
   .hero-title {
-    font-size: 36px;
+    font-size: 20px; /* Ultra small title for mobile */
     text-align: center;
+    line-height: 1; /* Ultra tight line height */
+    margin-bottom: 2px; /* Ultra minimal bottom margin */
+    margin-top: 0; /* No top margin */
   }
 
   .hero-subtitle {
     text-align: center;
+    margin-top: 0;
+    margin-bottom: 12px; /* More spacing after description */
+    font-size: 11px; /* Ultra small subtitle */
+    line-height: 1.1; /* Very tight line height */
+    padding: 0 10px; /* Minimal horizontal padding */
   }
 
   .hero-features {
     justify-content: center;
     flex-wrap: wrap;
+    gap: 8px; /* Smaller gap between features */
+    margin-bottom: 15px; /* More spacing after feature cards */
+  }
+
+  .feature {
+    font-size: 10px; /* Smaller feature text */
+    padding: 2px 6px; /* Smaller padding */
   }
 
   .hero-actions {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 16px;
+    gap: 2px; /* Ultra minimal gap between buttons */
+    margin-top: 2px; /* Ultra small top margin */
   }
 
   .hero-actions .btn {
@@ -2815,17 +2969,30 @@ body {
 
 /* Extra small mobile styles for very tight layouts */
 @media (max-width: 480px) {
+  .trust-bar {
+    padding: 6px 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
   .trust-items {
     gap: 6px;
-    padding: 0;
+    padding: 0 8px;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    overflow: visible;
+    box-sizing: border-box;
   }
 
   .trust-item {
-    font-size: 11.5px;
-    flex: 0 1 auto;
+    font-size: 11px; /* Slightly larger for readability */
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none; /* Remove width constraint */
+    overflow: visible;
+    text-align: center;
   }
 
   .trust-item i {
@@ -2880,9 +3047,18 @@ body {
     font-size: 12px !important;
   }
 
+  /* Extra small screens - balanced left/right spacing */
+  .navbar .container {
+    padding: 0 8px; /* Balanced padding for equal left/right spacing on small screens */
+  }
+
   .nav-content {
-    padding: 0 10px;
-    gap: 8px;
+    padding: 0 0; /* Remove extra padding to let container handle spacing */
+    gap: 6px; /* Smaller gap to save space */
+  }
+
+  .logo {
+    margin-left: -10px; /* Move logo even further left on small screens */
   }
 
   .logo-icon {
@@ -2892,10 +3068,15 @@ body {
 
   .logo-text h1 {
     font-size: 18px;
+    margin-left: -10px; /* Move "ALL TIME" further left on small screens */
+    white-space: nowrap; /* Keep "ALL TIME" side by side */
   }
 
   .logo-text span {
     font-size: 11px;
+    margin-left: 0; /* Reset margin to center under "ALL TIME" */
+    text-align: center; /* Center "PLUMBING" text */
+    display: block; /* Ensure it's a block element for centering */
   }
 
   .cta-button {
@@ -2906,6 +3087,18 @@ body {
   .cta-button i {
     font-size: 12px;
     margin-right: 3px;
+  }
+
+  .nav-cta {
+    transform: translateX(
+      -20px
+    ); /* Move Call Now button further to the left on small screens */
+  }
+
+  .mobile-toggle {
+    transform: translateX(
+      -16px
+    ); /* Actually move dropdown menu to the left on small screens */
   }
 
   .mobile-toggle span {
