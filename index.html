@@ -6,6 +6,24 @@
     <!-- Status bar color to match header -->
     <meta name="theme-color" content="#186c8b" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- Preload critical images for instant loading -->
+    <link
+      rel="preload"
+      as="image"
+      href="ChatGPT Image Aug 10, 2025, 04_02_41 PM.png"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=70"
+    />
+
     <title>
       All Time Plumbing - #1 Trusted Plumbing Experts | 24/7 Emergency Service
     </title>
@@ -278,6 +296,14 @@
           color: inherit !important;
           text-decoration: none !important;
         }
+      }
+
+      /* Optimize image loading performance */
+      img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        transform: translateZ(0);
+        will-change: transform;
       }
     </style>
   </head>
