@@ -640,10 +640,10 @@ body {
   text-align: center;
   transition: var(--transition-normal);
   position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 }
 
 .service-card:hover {
@@ -664,14 +664,24 @@ body {
 
 .featured-badge {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--accent-orange);
   color: var(--white);
-  padding: 4px 12px;
-  border-radius: 12px;
+  padding: 8px 18px;
+  border-radius: 18px;
   font-size: 12px;
   font-weight: 600;
+  z-index: 10;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--white);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .service-icon {
