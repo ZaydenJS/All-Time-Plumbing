@@ -270,6 +270,25 @@
         color: #186c8b;
         border: 2px solid #186c8b;
       }
+
+      /* Fix credential card badge alignment for all screen sizes */
+      .credential-card {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 100% !important;
+      }
+
+      .credential-content {
+        display: flex !important;
+        flex-direction: column !important;
+        flex-grow: 1 !important;
+        justify-content: space-between !important;
+      }
+
+      .credential-badge {
+        margin-top: auto !important;
+      }
+
       @media (max-width: 768px) {
         .nav-menu {
           display: none;
@@ -322,6 +341,58 @@
           color: inherit !important;
           text-decoration: none !important;
         }
+      }
+
+      /* Story section mobile ordering */
+      @media (max-width: 768px) {
+        .story-content {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .story-text {
+          order: 1;
+        }
+
+        .story-visual {
+          order: 2;
+        }
+
+        .story-description {
+          order: 3;
+        }
+
+        /* Make story image much larger on mobile */
+        .story-visual {
+          max-width: 400px !important;
+          margin: 20px auto !important;
+        }
+
+        .story-image {
+          padding: 8px !important;
+        }
+
+        .story-image img {
+          height: 220px !important;
+        }
+
+        /* Show short description on mobile, hide full description */
+        .story-description-full {
+          display: none !important;
+        }
+
+        .story-description-mobile {
+          display: block !important;
+        }
+      }
+
+      /* Desktop: Show full description, hide mobile description */
+      .story-description-full {
+        display: block;
+      }
+
+      .story-description-mobile {
+        display: none;
       }
 
       /* Optimize image loading performance */
@@ -571,8 +642,8 @@
               Installation, repair, and replacement of all hot water systems.
             </p>
             <ul>
-              <li>System installations</li>
               <li>Repairs & servicing</li>
+              <li>System installations</li>
               <li>Emergency replacements</li>
               <li>Energy-efficient upgrades</li>
             </ul>
@@ -586,8 +657,8 @@
             <h3>Pipe Relining</h3>
             <p>Modern trenchless pipe repair and relining solutions.</p>
             <ul>
-              <li>Trenchless repairs</li>
               <li>Pipe relining</li>
+              <li>Trenchless repairs</li>
               <li>Minimal excavation</li>
               <li>Long-lasting solutions</li>
             </ul>
@@ -603,10 +674,10 @@
               Safe and professional gas fitting and appliance installations.
             </p>
             <ul>
-              <li>Gas line installations</li>
-              <li>Appliance connections</li>
               <li>Safety inspections</li>
+              <li>Gas line installations</li>
               <li>Emergency gas repairs</li>
+              <li>Appliance connections</li>
             </ul>
             <a href="#contact" class="service-btn">Get Quote</a>
           </div>
@@ -618,10 +689,10 @@
             <h3>Emergency Plumbing</h3>
             <p>24/7 emergency plumbing services for urgent repairs.</p>
             <ul>
-              <li>24/7 availability</li>
               <li>Rapid response</li>
-              <li>Emergency repairs</li>
               <li>Burst pipe fixes</li>
+              <li>24/7 availability</li>
+              <li>Emergency repairs</li>
             </ul>
             <a href="tel:0455123456" class="service-btn emergency">Call Now</a>
           </div>
@@ -644,10 +715,10 @@
               <div class="benefit">
                 <i class="fas fa-check-circle"></i>
                 <div>
-                  <h4>Professional & Reliable</h4>
+                  <h4>Upfront Pricing</h4>
                   <p>
-                    Experienced professionals committed to quality workmanship
-                    and your peace of mind
+                    No hidden fees or surprise charges - transparent pricing
+                    always
                   </p>
                 </div>
               </div>
@@ -663,20 +734,20 @@
               <div class="benefit">
                 <i class="fas fa-check-circle"></i>
                 <div>
-                  <h4>100% Satisfaction Guarantee</h4>
+                  <h4>Professional & Reliable</h4>
                   <p>
-                    We stand behind our work with a complete satisfaction
-                    promise
+                    Experienced professionals committed to quality workmanship
+                    and your peace of mind
                   </p>
                 </div>
               </div>
               <div class="benefit">
                 <i class="fas fa-check-circle"></i>
                 <div>
-                  <h4>Upfront Pricing</h4>
+                  <h4>100% Satisfaction Guarantee</h4>
                   <p>
-                    No hidden fees or surprise charges - transparent pricing
-                    always
+                    We stand behind our work with a complete satisfaction
+                    promise
                   </p>
                 </div>
               </div>
@@ -769,22 +840,25 @@
                   built on the foundation of trust, quality workmanship, and
                   genuine care for our community."
                 </p>
+                <div class="story-details">
+                  <p class="story-description-full">
+                    Serving Greater Sydney for 16+ years with trusted plumbing
+                    services. From blocked drains to pipe relining, we deliver
+                    quality workmanship at honest prices with no hidden costs.
+                    Our experienced team is available 24/7 for emergency
+                    repairs, and we pride ourselves on transparent pricing with
+                    detailed quotes before any work begins. Whether it's a
+                    simple tap repair or complex pipe relining, we bring the
+                    same level of professionalism and attention to detail to
+                    every job.
+                  </p>
+                  <p class="story-description-mobile">
+                    Serving Greater Sydney for 16+ years with trusted plumbing
+                    services. Quality workmanship at honest prices with 24/7
+                    emergency support.
+                  </p>
+                </div>
               </div>
-              <p>
-                For more than 16 years, we have been serving the Greater Sydney
-                community with plumbing services they can depend on. From
-                general plumbing tasks such as blocked drains and leaking taps,
-                to specialised projects like pipe relining and hot water
-                installation and repairs, All Time Plumbing has become a trusted
-                name throughout the region.
-              </p>
-              <p>
-                Our team is committed to maintaining the superior workmanship
-                and customer care that our reputation was built on, while
-                maintaining honest pricing. We provide accurate quotes with no
-                hidden costs and are happy to explain why and what will be
-                undertaken prior to commencing work.
-              </p>
             </div>
             <div class="story-visual">
               <div class="story-image">
