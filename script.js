@@ -1,54 +1,102 @@
-// All Time Plumbing - Interactive Features
+// All Time Plumbing - Optimized Interactive Features
+(function () {
+  "use strict";
 
-document.addEventListener("DOMContentLoaded", function () {
+  // Cache DOM elements for better performance
+  const elements = {
+    mobileToggle: null,
+    navMenu: null,
+    navbar: null,
+    contactForm: null,
+  };
+
+  // Initialize when DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  function init() {
+    cacheElements();
+    initMobileNav();
+    initSmoothScroll();
+    initContactForm();
+    initGallery();
+    initIntersectionObserver();
+  }
+
+  function cacheElements() {
+    elements.mobileToggle = document.querySelector(".mobile-toggle");
+    elements.navMenu = document.querySelector(".nav-menu");
+    elements.navbar = document.querySelector(".navbar");
+    elements.contactForm = document.getElementById("quoteForm");
+  }
+
   // Mobile Navigation Toggle
-  const mobileToggle = document.querySelector(".mobile-toggle");
-  const navMenu = document.querySelector(".nav-menu");
+  function initMobileNav() {
+    if (!elements.mobileToggle || !elements.navMenu) return;
 
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener("click", function () {
-      const isOpen = navMenu.classList.toggle("active");
-      mobileToggle.classList.toggle("active");
-      mobileToggle.setAttribute("aria-expanded", String(isOpen));
+    elements.mobileToggle.addEventListener(
+      "click",
+      function () {
+        const isOpen = elements.navMenu.classList.toggle("active");
+        this.classList.toggle("active");
+        this.setAttribute("aria-expanded", String(isOpen));
+      },
+      { passive: true }
+    );
+  }
+
+  // Optimized Smooth Scrolling
+  function initSmoothScroll() {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    if (!navLinks.length) return;
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", handleSmoothScroll, { passive: false });
     });
   }
 
-  // Smooth Scrolling for Navigation Links
-  const navLinks = document.querySelectorAll('a[href^="#"]');
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute("href");
-      const targetSection = document.querySelector(targetId);
+  function handleSmoothScroll(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href");
+    const targetSection = document.querySelector(targetId);
 
-      if (targetSection) {
-        // Dynamically account for current sticky header height on mobile/desktop
-        const navbarEl = document.querySelector(".navbar");
-        const headerHeight = navbarEl
-          ? Math.ceil(navbarEl.getBoundingClientRect().height)
-          : 0;
-        const targetY =
-          window.pageYOffset +
-          targetSection.getBoundingClientRect().top -
-          headerHeight -
-          8; // small breathing space
+    if (!targetSection) return;
 
-        window.scrollTo({
-          top: Math.max(targetY, 0),
-          behavior: "smooth",
-        });
+    // Use cached navbar element for better performance
+    const headerHeight = elements.navbar
+      ? Math.ceil(elements.navbar.getBoundingClientRect().height)
+      : 0;
 
-        // Close mobile menu if open and update aria state
-        if (navMenu && navMenu.classList.contains("active")) {
-          navMenu.classList.remove("active");
-          if (mobileToggle) {
-            mobileToggle.classList.remove("active");
-            mobileToggle.setAttribute("aria-expanded", "false");
-          }
-        }
-      }
+    const targetY =
+      window.pageYOffset +
+      targetSection.getBoundingClientRect().top -
+      headerHeight -
+      8;
+
+    // Use requestAnimationFrame for smoother scrolling
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: Math.max(targetY, 0),
+        behavior: "smooth",
+      });
     });
-  });
+
+    // Close mobile menu if open
+    closeMobileMenu();
+  }
+
+  function closeMobileMenu() {
+    if (elements.navMenu?.classList.contains("active")) {
+      elements.navMenu.classList.remove("active");
+      if (elements.mobileToggle) {
+        elements.mobileToggle.classList.remove("active");
+        elements.mobileToggle.setAttribute("aria-expanded", "false");
+      }
+    }
+  }
 
   // Contact Form Handling
   const contactForm = document.getElementById("quoteForm");
