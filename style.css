@@ -1361,18 +1361,18 @@ body {
   }
 
   .logo {
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 1;
     margin-left: -8px; /* Move logo further to the left */
     max-width: calc(
-      100% - 140px
-    ); /* Reserve space for Call Now button and toggle */
+      100% - 160px
+    ); /* Reserve more space for Call Now button and toggle */
     overflow: hidden;
   }
 
   .logo-icon {
-    width: 40px; /* Smaller logo */
-    height: 40px;
+    width: 35px; /* Even smaller logo */
+    height: 35px;
   }
 
   .logo-text {
@@ -1381,7 +1381,7 @@ body {
   }
 
   .logo-text h1 {
-    font-size: 15px; /* Smaller logo text */
+    font-size: 12px; /* Much smaller logo text */
     line-height: 1;
     margin-left: -8px; /* Move "ALL TIME" further left */
     white-space: nowrap; /* Keep "ALL TIME" side by side */
@@ -1391,8 +1391,8 @@ body {
   }
 
   .logo-text span {
-    font-size: 9px; /* Smaller "PLUMBING" text */
-    letter-spacing: 1px;
+    font-size: 7px; /* Much smaller "PLUMBING" text */
+    letter-spacing: 0.5px;
     margin-left: 0; /* Reset margin to center under "ALL TIME" */
     text-align: center; /* Center "PLUMBING" text */
     display: block; /* Ensure it's a block element for centering */
