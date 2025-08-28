@@ -1323,12 +1323,12 @@ body {
   }
 
   .logo {
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 1;
     margin-left: -8px; /* Move logo further to the left */
     max-width: calc(
-      100% - 140px
-    ); /* Reserve space for Call Now button and toggle */
+      100% - 120px
+    ); /* Less reserved space to allow more room for logo text */
     overflow: hidden;
   }
 
@@ -1371,23 +1371,23 @@ body {
   }
 
   .cta-button {
-    padding: 8px 12px; /* Slightly smaller to prevent overlap */
-    font-size: 13px;
+    padding: 6px 10px; /* More compact to give logo more space */
+    font-size: 12px;
     border-radius: 8px;
     min-width: auto;
     white-space: nowrap;
   }
 
   .cta-button i {
-    font-size: 13px;
-    margin-right: 5px;
+    font-size: 12px;
+    margin-right: 4px;
   }
 
   .mobile-toggle {
     display: flex;
     flex-shrink: 0;
     transform: none; /* Remove transform to prevent overlap */
-    margin-left: 10px; /* Space from Call Now button */
+    margin-left: 8px; /* Slightly less space to give logo more room */
   }
 
   .mobile-toggle span {
