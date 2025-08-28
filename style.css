@@ -1324,12 +1324,10 @@ body {
 
   .logo {
     gap: 6px;
-    flex-shrink: 1;
+    flex: 1 1 auto; /* Allow logo to take available space */
     margin-left: -8px; /* Move logo further to the left */
-    max-width: calc(
-      100% - 120px
-    ); /* Less reserved space to allow more room for logo text */
-    overflow: hidden;
+    min-width: 0; /* Allow shrinking but prioritize text visibility */
+    overflow: visible; /* Don't hide overflow to see full text */
   }
 
   .logo-icon {
@@ -1338,18 +1336,18 @@ body {
   }
 
   .logo-text {
-    overflow: hidden;
-    flex-shrink: 1;
+    overflow: visible; /* Don't hide text */
+    flex-shrink: 0; /* Don't shrink the text container */
+    min-width: fit-content; /* Ensure text has enough space */
   }
 
   .logo-text h1 {
-    font-size: 14px; /* Smaller logo text */
+    font-size: 13px; /* Slightly smaller but still readable */
     line-height: 1;
     margin-left: -6px; /* Move "ALL TIME" further left */
     white-space: nowrap; /* Keep "ALL TIME" side by side */
     margin-bottom: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* Show full text */
   }
 
   .logo-text span {
@@ -1371,16 +1369,16 @@ body {
   }
 
   .cta-button {
-    padding: 6px 10px; /* More compact to give logo more space */
-    font-size: 12px;
-    border-radius: 8px;
+    padding: 5px 8px; /* Even more compact */
+    font-size: 11px;
+    border-radius: 6px;
     min-width: auto;
     white-space: nowrap;
   }
 
   .cta-button i {
-    font-size: 12px;
-    margin-right: 4px;
+    font-size: 11px;
+    margin-right: 3px;
   }
 
   .mobile-toggle {
