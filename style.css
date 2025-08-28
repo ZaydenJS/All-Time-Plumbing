@@ -1354,14 +1354,20 @@ body {
 
   .nav-content {
     padding: 0 0; /* Remove extra padding to let container handle spacing */
-    gap: 10px;
+    gap: 8px;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
   .logo {
-    gap: 12px;
-    flex-shrink: 0;
+    gap: 8px;
+    flex-shrink: 1;
     margin-left: -8px; /* Move logo further to the left */
+    max-width: calc(
+      100% - 140px
+    ); /* Reserve space for Call Now button and toggle */
+    overflow: hidden;
   }
 
   .logo-icon {
@@ -1369,26 +1375,40 @@ body {
     height: 40px;
   }
 
+  .logo-text {
+    overflow: hidden;
+    flex-shrink: 1;
+  }
+
   .logo-text h1 {
-    font-size: 16px; /* Smaller logo text */
+    font-size: 15px; /* Smaller logo text */
     line-height: 1;
     margin-left: -8px; /* Move "ALL TIME" further left */
     white-space: nowrap; /* Keep "ALL TIME" side by side */
+    margin-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .logo-text span {
-    font-size: 10px; /* Smaller "PLUMBING" text */
+    font-size: 9px; /* Smaller "PLUMBING" text */
     letter-spacing: 1px;
     margin-left: 0; /* Reset margin to center under "ALL TIME" */
     text-align: center; /* Center "PLUMBING" text */
     display: block; /* Ensure it's a block element for centering */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .nav-cta {
     margin-left: auto;
     margin-right: 0;
-    transform: translateX(-15px); /* Move Call Now button further to the left */
+    transform: translateX(-8px); /* Move Call Now button slightly to the left */
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
   .cta-button {
@@ -1407,12 +1427,13 @@ body {
   .mobile-toggle {
     display: flex;
     flex-shrink: 0;
-    transform: translateX(-12px); /* Actually move dropdown menu to the left */
+    transform: translateX(-4px); /* Reduce translation to prevent overlap */
     position: relative;
     z-index: 1000;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+    margin-left: 4px;
   }
 
   .mobile-toggle span {
