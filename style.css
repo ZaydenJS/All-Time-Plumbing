@@ -1349,27 +1349,31 @@ body {
   .nav-cta {
     margin-left: auto;
     margin-right: 0;
-    transform: translateX(-15px); /* Move Call Now button further to the left */
+    /* Removed transform to avoid overlap; rely on flex spacing */
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .cta-button {
-    padding: 8px 14px;
-    font-size: 14px;
+    padding: 6px 10px; /* Smaller on mobile to prevent overlap */
+    font-size: 12px;
     border-radius: 8px;
     min-width: auto;
     white-space: nowrap;
   }
 
   .cta-button i {
-    font-size: 14px;
-    margin-right: 6px;
+    font-size: 12px;
+    margin-right: 4px;
   }
 
   .mobile-toggle {
     display: flex;
     flex-shrink: 0;
-    transform: translateX(-12px); /* Actually move dropdown menu to the left */
+    transform: none; /* Keep natural position to avoid crowding */
+    margin-left: 8px; /* Space from Call Now button */
   }
 
   .mobile-toggle span {
@@ -3149,7 +3153,7 @@ body {
   }
 
   .cta-button {
-    padding: 7px 12px;
+    padding: 6px 10px; /* Extra compact on very small screens */
     font-size: 12px;
   }
 
@@ -3159,15 +3163,12 @@ body {
   }
 
   .nav-cta {
-    transform: translateX(
-      -20px
-    ); /* Move Call Now button further to the left on small screens */
+    transform: none; /* No horizontal shift on very small screens */
   }
 
   .mobile-toggle {
-    transform: translateX(
-      -16px
-    ); /* Actually move dropdown menu to the left on small screens */
+    transform: none; /* Keep natural position on very small screens */
+    margin-left: 6px; /* Add spacing between Call Now button and toggle */
   }
 
   .mobile-toggle span {
