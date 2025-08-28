@@ -1316,23 +1316,23 @@ body {
 
   .nav-content {
     padding: 0 0; /* Remove extra padding to let container handle spacing */
-    gap: 8px;
+    gap: 4px; /* Minimal gap to save space */
     align-items: center;
     justify-content: space-between;
     width: 100%;
   }
 
   .logo {
-    gap: 6px;
+    gap: 4px; /* Minimal gap between icon and text */
     flex: 1 1 auto; /* Allow logo to take available space */
-    margin-left: -8px; /* Move logo further to the left */
+    margin-left: -10px; /* Move logo even further left */
     min-width: 0; /* Allow shrinking but prioritize text visibility */
     overflow: visible; /* Don't hide overflow to see full text */
   }
 
   .logo-icon {
-    width: 35px; /* Smaller logo to save space */
-    height: 35px;
+    width: 28px; /* Much smaller logo to maximize text space */
+    height: 28px;
   }
 
   .logo-text {
@@ -1369,28 +1369,29 @@ body {
   }
 
   .cta-button {
-    padding: 5px 8px; /* Even more compact */
-    font-size: 11px;
-    border-radius: 6px;
+    padding: 4px 6px; /* Ultra compact */
+    font-size: 10px;
+    border-radius: 4px;
     min-width: auto;
     white-space: nowrap;
+    font-weight: 600;
   }
 
   .cta-button i {
-    font-size: 11px;
-    margin-right: 3px;
+    font-size: 10px;
+    margin-right: 2px;
   }
 
   .mobile-toggle {
     display: flex;
     flex-shrink: 0;
     transform: none; /* Remove transform to prevent overlap */
-    margin-left: 8px; /* Slightly less space to give logo more room */
+    margin-left: 4px; /* Minimal space to maximize logo room */
   }
 
   .mobile-toggle span {
-    width: 26px;
-    height: 3px;
+    width: 20px; /* Smaller hamburger to save space */
+    height: 2px;
   }
 
   .hero {
