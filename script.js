@@ -6,28 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const navMenu = document.querySelector(".nav-menu");
 
   if (mobileToggle && navMenu) {
-    // Function to toggle menu
-    function toggleMenu(e) {
-      e.preventDefault();
-      e.stopPropagation();
+    mobileToggle.addEventListener("click", function () {
       const isOpen = navMenu.classList.toggle("active");
       mobileToggle.classList.toggle("active");
       mobileToggle.setAttribute("aria-expanded", String(isOpen));
-    }
-
-    // Add both click and touch events for better mobile compatibility
-    mobileToggle.addEventListener("click", toggleMenu);
-    mobileToggle.addEventListener("touchstart", toggleMenu, { passive: false });
-
-    // Close menu when clicking outside
-    document.addEventListener("click", function (e) {
-      if (!mobileToggle.contains(e.target) && !navMenu.contains(e.target)) {
-        if (navMenu.classList.contains("active")) {
-          navMenu.classList.remove("active");
-          mobileToggle.classList.remove("active");
-          mobileToggle.setAttribute("aria-expanded", "false");
-        }
-      }
     });
   }
 
