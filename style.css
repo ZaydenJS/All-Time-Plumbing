@@ -1316,34 +1316,51 @@ body {
 
   .nav-content {
     padding: 0 0; /* Remove extra padding to let container handle spacing */
-    gap: 10px;
+    gap: 8px;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
   .logo {
-    gap: 12px;
-    flex-shrink: 0;
+    gap: 8px;
+    flex-shrink: 1;
     margin-left: -8px; /* Move logo further to the left */
+    max-width: calc(
+      100% - 140px
+    ); /* Reserve space for Call Now button and toggle */
+    overflow: hidden;
   }
 
   .logo-icon {
-    width: 40px; /* Smaller logo */
-    height: 40px;
+    width: 35px; /* Smaller logo to save space */
+    height: 35px;
+  }
+
+  .logo-text {
+    overflow: hidden;
+    flex-shrink: 1;
   }
 
   .logo-text h1 {
-    font-size: 16px; /* Smaller logo text */
+    font-size: 14px; /* Smaller logo text */
     line-height: 1;
-    margin-left: -8px; /* Move "ALL TIME" further left */
+    margin-left: -6px; /* Move "ALL TIME" further left */
     white-space: nowrap; /* Keep "ALL TIME" side by side */
+    margin-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .logo-text span {
-    font-size: 10px; /* Smaller "PLUMBING" text */
-    letter-spacing: 1px;
+    font-size: 8px; /* Smaller "PLUMBING" text */
+    letter-spacing: 0.5px;
     margin-left: 0; /* Reset margin to center under "ALL TIME" */
     text-align: center; /* Center "PLUMBING" text */
     display: block; /* Ensure it's a block element for centering */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .nav-cta {
@@ -1354,22 +1371,23 @@ body {
   }
 
   .cta-button {
-    padding: 8px 14px;
-    font-size: 14px;
+    padding: 8px 12px; /* Slightly smaller to prevent overlap */
+    font-size: 13px;
     border-radius: 8px;
     min-width: auto;
     white-space: nowrap;
   }
 
   .cta-button i {
-    font-size: 14px;
-    margin-right: 6px;
+    font-size: 13px;
+    margin-right: 5px;
   }
 
   .mobile-toggle {
     display: flex;
     flex-shrink: 0;
-    transform: translateX(-12px); /* Actually move dropdown menu to the left */
+    transform: none; /* Remove transform to prevent overlap */
+    margin-left: 10px; /* Space from Call Now button */
   }
 
   .mobile-toggle span {
