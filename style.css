@@ -110,6 +110,37 @@ body {
   box-sizing: border-box;
 }
 
+/* Ensure status bar area is white on mobile */
+@media (max-width: 768px) {
+  html {
+    background-color: white !important;
+  }
+
+  body {
+    background-color: white !important;
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* Prevent trust bar from extending into status bar area */
+  .trust-bar {
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Add white background above trust bar for status bar area */
+  .trust-bar::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: white;
+    z-index: -1;
+  }
+}
+
 .trust-items {
   display: flex;
   justify-content: center;
@@ -285,6 +316,13 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .mobile-toggle span {
@@ -1370,6 +1408,11 @@ body {
     display: flex;
     flex-shrink: 0;
     transform: translateX(-12px); /* Actually move dropdown menu to the left */
+    position: relative;
+    z-index: 1000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
   }
 
   .mobile-toggle span {
